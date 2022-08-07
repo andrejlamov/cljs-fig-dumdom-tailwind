@@ -4,7 +4,7 @@ TW_CMD=$(TW_PATH) -i ./resources/public/input.css -o ./target/public/tailwind-ou
 
 .PHONY: tailwind-watch dev-repl advanced-compilation
 
-$(TW):
+$(TW_PATH):
 	mkdir -p .tailwind
 	curl -sL https://github.com/tailwindlabs/tailwindcss/releases/download/$(TW_VERSION)/tailwindcss-macos-x64 -o $(TW_PATH)
 	chmod +x $(TW_PATH)
