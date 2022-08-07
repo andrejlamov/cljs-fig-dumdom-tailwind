@@ -1,1 +1,2 @@
+^{:css-dirs ["target/public/tailwind-out/"]}         
 {:main hello.core}
