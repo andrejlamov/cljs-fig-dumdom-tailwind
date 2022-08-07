@@ -1,10 +1,20 @@
-.PHONY: watch
+TW_VERSION=v3.1.8
+TW_PATH=.tailwind/tailwindcss-$(TW_VERSION)
+TW_CMD=$(TW_PATH) -i ./resources/public/input.css -o ./target/public/tailwind-out/output.css
 
-TAILWIND_VERSION=v3.1.8
+.PHONY: tailwind-watch dev-repl advanced-compilation
 
-tailwindcss:
-	curl -sL https://github.com/tailwindlabs/tailwindcss/releases/download/$(TAILWIND_VERSION)/tailwindcss-macos-x64 -o tailwindcss
-	chmod +x tailwindcss
+$(TW):
+	mkdir -p .tailwind
+	curl -sL https://github.com/tailwindlabs/tailwindcss/releases/download/$(TW_VERSION)/tailwindcss-macos-x64 -o $(TW_PATH)
+	chmod +x $(TW_PATH)
 
-watch: tailwindcss
-	./tailwindcss -i ./resources/public/input.css -o ./target/public/tailwind-out/output.css --watch
+tailwind-watch: $(TW_PATH)
+	./$(TW_CMD) --watch
+
+dev-repl:
+	clojure -A:build-dev
+
+advanced-compilation:
+	clojure -m figwheel.main -O advanced --build-once dev
+	./$(TW_CMD)

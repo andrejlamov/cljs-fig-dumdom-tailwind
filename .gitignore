@@ -2,4 +2,4 @@
 .nrepl-port
 .rebel_readline_history
 /target
-tailwindcss
+/.tailwind
