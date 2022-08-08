@@ -10,15 +10,14 @@ make dev-repl
 ```
 ## tailwind
 
-start tailwind watcher for optimized css output
+start tailwind watcher to generate css
 
 ``` shell
 make tailwind-watch
 ```
 
 ## google closure
-compile advanced google closure bundle 
-
+compile advanced google closure single js file output 
 
 ``` shell
 make advanced-compilation
